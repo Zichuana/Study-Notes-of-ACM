@@ -1320,6 +1320,7 @@ int main()
 ```c++
 #include <iostream>
 #include <cstdio>
+#include <cstring>
 using namespace std;
 int a[20], vis[20], n;
 int prime[40] = {0, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0,
@@ -1327,16 +1328,16 @@ int prime[40] = {0, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 
 void dfs(int step)
 {
 	int i;
-	if (step == n + 1 && isprime[a[n] + a[1]])
+	if (step == n + 1 && prime[a[n] + a[1]])
 	{
 		for (i = 1; i < n; i++)
 			printf("%d ", a[i]);
-		printf("%d\n", a[n]);
+        cout<<a[n]<<endl;
 		return;
 	}
 	for (i = 2; i <= n; i++)
 	{
-		if (!vis[i] && isprime[i + a[step - 1]])
+		if (!vis[i] && prime[i + a[step - 1]])
 		//如果这个数没用过，并且这个数和上一个放到环里的数之和是素数
 		{
 			a[step] = i;
@@ -1352,12 +1353,14 @@ int main()
 	int k = 1;
 	a[1] = 1;
 
-	while (scanf("%d", &n) != EOF)
+	while (cin>>n)
 	{
+        if(k>1){
+            cout<<endl;
+        }
+        cout<<"Case "<<k++<<":"<<endl;
 		memset(vis, 0, sizeof(vis));
-		printf("Case %d:\n", k++);
 		dfs(2);
-		printf("\n");
 	}
 	return 0;
 }
