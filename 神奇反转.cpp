@@ -13,7 +13,8 @@ int main(){
         }
         vector<int> res = {v.rbegin(),v.rend()};
         for(auto i:res) cout<<i<<" ";
-        cout<<endl;
+        cout<<endl; 
+	//reverse(s.begin(),s.end());比这个快
     }
     return 0;
 }
